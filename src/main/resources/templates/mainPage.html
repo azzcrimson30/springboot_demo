@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Minimal Blog</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2d3436;
+            --accent: #0984e3;
+            --bg: #f5f6fa;
+            --text: #2d3436;
+            --light-text: #636e72;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Blog Grid */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Blog Card */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background: #dfe6e9; /* Placeholder color */
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .card h2 {
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        .meta {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #b2bec3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--light-text);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MyJournal.</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Stories & Ideas</h1>
+        <p>A collection of thoughts on tech, design, and life.</p>
+    </header>
+
+    <div class="container">
+        <h1>Current Date and Time</h1>
+        <!-- th:text is like <?php echo $serverTime; ?> -->
+        <p>The time is: <span th:text="${serverTime}">Placeholder</span></p>
+        <a href="/"><span th:text="${btnString}">Placeholder</span></a>
+    </div>
+
+    <div class="container">
+        <!-- Post 1 -->
+        <article class="card">
+            <img src="https://unsplash.com" alt="Code" class="card-img">
+            <div class="card-content">
+                <span class="category">Technology</span>
+                <h2>The Future of Web Design</h2>
+                <p>Minimalism is making a huge comeback. Discover why simple layouts are winning the web in 2024...</p>
+                <div class="meta">Oct 24, 2023 • 5 min read</div>
+            </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="card">
+            <img src="https://unsplash.com" alt="Coffee" class="card-img">
+            <div class="card-content">
+                <span class="category">Lifestyle</span>
+                <h2>Productivity Habits</h2>
+                <p>How waking up at 6 AM changed my workflow and helped me focus on what truly matters...</p>
+                <div class="meta">Oct 20, 2023 • 8 min read</div>
+            </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="card">
+            <img src="https://unsplash.com" alt="Work" class="card-img">
+            <div class="card-content">
+                <span class="category">Business</span>
+                <h2>Remote Work Tips</h2>
+                <p>Managing a team across three different time zones isn't easy. Here is how we make it happen...</p>
+                <div class="meta">Oct 15, 2023 • 4 min read</div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 MyJournal Blog. Built with ❤️</p>
+    </footer>
+
+</body>
+</html>

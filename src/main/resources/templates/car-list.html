@@ -1,0 +1,17 @@
+<table>
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Type</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 'car' is the local loop variable; 'allCars' is from the Controller -->
+        <tr th:each="car : ${allCars}">
+            <td th:text="${car.brand}">Brand Name</td>
+            <td th:text="${car.type}">Type</td>
+            <td th:text="'$' + ${car.price}">0.00</td>
+        </tr>
+    </tbody>
+</table>
