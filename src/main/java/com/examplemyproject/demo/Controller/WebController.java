@@ -4,12 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.time.LocalDateTime;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller // This handles HTML views
 public class WebController {
-
     @GetMapping("/")
     public String sayHello() {
         return "index";
@@ -24,21 +21,5 @@ public class WebController {
 
         // Return the name of the HTML file (without .html extension)
         return "mainPage"; 
-    }
-
-    @GetMapping("/cars")
-    public String getCars(Model model) {
-
-        try {
-            CarController cars = new CarController();
-            cars.getAllCars();
-            model.addAttribute("allCars", cars);
-            return "car-list";
-        } catch (Exception e) {
-            System.out.println("-------------------------- INSIDE CARS FUNCTION error --------------------");
-            System.out.println(e.getMessage());
-            return e.getMessage();
-        }
-    }
-    
+    }    
 }

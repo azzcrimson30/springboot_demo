@@ -2,8 +2,7 @@ package com.examplemyproject.demo.Model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
+@Document(collection = "cars")
 public class Car {
 
     @Id
@@ -12,6 +11,8 @@ public class Car {
     private String brand;
     private Double price;
     private String type;
+
+    public Car(){}
 
     // Constructor to quickly add data
     public Car(String brand, String type, String model, double price) {

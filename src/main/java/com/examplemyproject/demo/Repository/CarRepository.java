@@ -8,7 +8,6 @@ import com.examplemyproject.demo.Model.Car;
 @Repository
 public interface CarRepository extends MongoRepository<Car, String>{
     List<Car> findByBrand(String brand);
-    List<Car> findByPrice(Double price);
     List<Car> findByModel(String model);
     List<Car> findByType(String type);
 }

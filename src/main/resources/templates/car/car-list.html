@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+    <title>Car Inventory</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h2>🚗 Car Inventory Database</h2>
+        <a th:href="@{/cars/new}" class="btn btn-primary">+ Add New Car</a>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Price ($)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="car : ${allCars}">
+                    <td th:text="${car.brand}"></td>
+                    <td th:text="${car.model}"></td>
+                    <td th:text="${car.type}"></td>
+                    <td th:text="${car.price}"></td>
+                    <td>
+                        <a th:href="@{/cars/edit/{id}(id=${car.id})}" class="btn btn-edit">Edit</a>
+                        <a th:href="@{/cars/delete/{id}(id=${car.id})}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

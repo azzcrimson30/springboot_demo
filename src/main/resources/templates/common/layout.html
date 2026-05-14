@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org" 
+      xmlns:layout="ultraq.net.nz">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Dashboard</title>
+    <!-- Universal CSS connection. Applied once here, covers all child pages -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Universal Header / Navigation Bar across all pages -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a th:href="@{/web/cars}" class="nav-logo">🚗 CarManager Pro</a>
+            <nav class="nav-links">
+                <a th:href="@{/web/cars}" class="nav-link">Inventory List</a>
+                <a th:href="@{/web/cars/new}" class="nav-link">+ Add Car</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Wrapper -->
+    <main class="container">
+        <!-- Child templates will automatically inject their code right here -->
+        <div layout:fragment="content"></div>
+    </main>
+
+    <!-- Universal Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2026 Car Management System Cloud Integration. All rights reserved.</p>
+    </footer>
+</body>
+</html>

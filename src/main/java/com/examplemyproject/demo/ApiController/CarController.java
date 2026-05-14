@@ -1,4 +1,4 @@
-package com.examplemyproject.demo.Controller;
+package com.examplemyproject.demo.ApiController;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +17,6 @@ import com.examplemyproject.demo.Model.Car;
 import com.examplemyproject.demo.Repository.CarRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-
-
 
 @RestController
 @RequestMapping("/api/cars")
@@ -44,8 +42,6 @@ public class CarController {
             return carRepository.findByModel(model);
         }else if(type != null){
             return carRepository.findByType(type);
-        }else if(price != 0){
-            return carRepository.findByPrice(price);
         }else{
             return carRepository.findAll();
         }
