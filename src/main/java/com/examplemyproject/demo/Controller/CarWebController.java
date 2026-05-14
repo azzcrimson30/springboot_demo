@@ -26,6 +26,7 @@ public class CarWebController {
     // 1. VIEW ALL CARS
     @GetMapping
     public String index(Model model) {
+        System.out.println("------------------> test -------------------->");
         try {
             List<Car> allCars = carRepository.findAll();
             model.addAttribute("allCars", allCars);
