@@ -8,8 +8,9 @@ services:
       - mongo_data:/data/db
 
   springboot_app:
-    build: .
-    image: springboot_demo
+    # build: .
+    # image: springboot_demo
+    image: azzcrimson30/springboot_demo:latest
     container_name: my-java-dev
     ports:
       - "8082:8080"
