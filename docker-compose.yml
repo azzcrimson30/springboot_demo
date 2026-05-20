@@ -12,6 +12,8 @@ services:
     # image: springboot_demo
     image: azzcrimson30/springboot_demo:latest
     build:
+      context: .
+      dockerfile: Dockerfile
     container_name: my-java-dev
     ports:
       - "8082:8080"
