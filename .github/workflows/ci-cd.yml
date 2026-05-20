@@ -51,3 +51,11 @@ jobs:
         tags: |
           azzcrimson30/springboot_demo:latest
           azzcrimson30/springboot_demo:${{ github.sha }}
+
+    - name: Pull and Restart Docker
+      run: |
+        cd C:\Users\TMOG-PC148\Documents\projects\Docker\springboot_demo
+        docker compose pull springboot_demo
+        docker compose up -d --force-recreate springboot_demo
+          
+
