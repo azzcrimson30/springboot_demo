@@ -58,5 +58,6 @@ jobs:
       shell: powershell
       run: |
         cd C:\Users\TMOG-PC148\Documents\projects\Docker\springboot_demo
+        git pull origin main
         docker compose pull springboot_app
         docker compose up -d --force-recreate springboot_app
