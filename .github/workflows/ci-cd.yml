@@ -55,7 +55,7 @@ jobs:
     - name: Pull and Restart Docker
       run: |
         cd C:\Users\TMOG-PC148\Documents\projects\Docker\springboot_demo
-        docker compose pull springboot_demo
-        docker compose up -d --force-recreate springboot_demo
+        docker compose pull springboot_app
+        docker compose up -d --force-recreate springboot_app
           
 
