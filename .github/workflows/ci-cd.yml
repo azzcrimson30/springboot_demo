@@ -5,9 +5,9 @@ on:
     branches: [ "main" ]
 
 jobs:
+  # JOB 1: Built on the GitHub Cloud
   build-and-deploy:
-    runs-on: ubuntu-latest # GitHub provides this Linux cloud runner automatically
-
+    runs-on: ubuntu-latest
     services:
       mongodb:
         image: mongo:latest
@@ -34,28 +34,29 @@ jobs:
         SPRING_DATA_MONGODB_DATABASE: Springboot_test_db
       run: ./mvnw clean package
 
-    # Log into your Docker Hub account using the secrets you saved
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # Build the image and automatically push it online to the cloud registry
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        # Replace 'your-docker-username' with your actual username below
         tags: |
           azzcrimson30/springboot_demo:latest
           azzcrimson30/springboot_demo:${{ github.sha }}
 
+  # JOB 2: Triggered automatically on YOUR laptop
+  deploy-local:
+    needs: build-and-deploy
+    runs-on: self-hosted
+    steps:
     - name: Pull and Restart Docker
+      shell: powershell
       run: |
         cd C:\Users\TMOG-PC148\Documents\projects\Docker\springboot_demo
         docker compose pull springboot_app
         docker compose up -d --force-recreate springboot_app
-          
-
